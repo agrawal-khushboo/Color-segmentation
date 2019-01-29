@@ -68,7 +68,7 @@ if __name__ == '__main__':
 #         cv2.waitKey(0)
 #         cv2.destroyAllWindows()
 
-mask_img,score = my_detector.segment_image(img)
+# mask_img,score = my_detector.segment_image(img)
 		#Display results:
 		#(1) Segmented images
 		#	 mask_img = my_detector.segment_image(img)
