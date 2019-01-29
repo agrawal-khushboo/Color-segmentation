@@ -31,7 +31,7 @@ class BarrelDetector():
 #         x=np.matrix(x)
 #         x=x.T
         
-        score=np.dot(x,self.weights)
+        score=np.dot(x.T,self.weights)
         predict=[]
         for i in range(800*1200):
             if (np.float(score[i]))>=-4.5:
