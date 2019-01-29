@@ -13,7 +13,7 @@ import numpy as np
 class BarrelDetector():
     def __init__(self):
         self.weights=[7.17373143,-11.80197334,0.62492144,-4.35011283]
-        self.weights=(np.matrix(self.weights)).T
+#         self.weights=(np.matrix(self.weights)).T
 #         weights=weights.T
         
 
@@ -28,10 +28,10 @@ class BarrelDetector():
             col=col/255         
             x.append(col)
         x.append(np.ones(800*1200))
-        x=np.matrix(x)
-        x=x.T
+#         x=np.matrix(x)
+#         x=x.T
         
-        score=np.matmul(x,self.weights)
+        score=np.dot(x,self.weights)
         predict=[]
         for i in range(800*1200):
             if (np.float(score[i]))>=-4.5:
@@ -65,9 +65,9 @@ if __name__ == '__main__':
     for filename in os.listdir(folder):
 		# read one test image
         img = cv2.imread(os.path.join(folder,filename))
-        cv2.imshow('image', img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+#         cv2.imshow('image', img)
+#         cv2.waitKey(0)
+#         cv2.destroyAllWindows()
 
 
 		#Display results:
