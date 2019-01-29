@@ -18,7 +18,7 @@ class BarrelDetector():
         
 
     def sigmoid(score):
-        return 1/(1+np.exp(score))
+        return 1/(1+np.exp(-score))
 
     def segment_image(self, img):
         x=[]
@@ -62,14 +62,13 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    for filename in os.listdir(folder):
-		# read one test image
-        img = cv2.imread(os.path.join(folder,filename))
+    img = cv2.imread('trainset/44.png')
+    
 #         cv2.imshow('image', img)
 #         cv2.waitKey(0)
 #         cv2.destroyAllWindows()
 
-
+mask_img,score = my_detector.segment_image(img)
 		#Display results:
 		#(1) Segmented images
 		#	 mask_img = my_detector.segment_image(img)
