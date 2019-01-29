@@ -33,7 +33,7 @@ class BarrelDetector():
         
         score=np.matmul(x,self.weights)
         predict=[]
-        for i in range(score.shape[0]):
+        for i in range(800*1200):
             if (np.float(score[i]))>=-4.5:
                 predict.append(1)
             else:
