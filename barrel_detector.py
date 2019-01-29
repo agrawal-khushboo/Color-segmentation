@@ -24,7 +24,7 @@ class BarrelDetector():
         x=[]
         for i in range(3):
             col=img[:,:,i]
-            col=col.flatten()
+            col=np.reshape(col,(1,800*1200))
             col=col/255         
             x.append(col)
         x.append(np.ones(800*1200))
