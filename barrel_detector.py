@@ -62,7 +62,7 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    img = cv2.imread('trainset/44.png')
+#     img = cv2.imread('trainset/44.png')
     
 #         cv2.imshow('image', img)
 #         cv2.waitKey(0)
