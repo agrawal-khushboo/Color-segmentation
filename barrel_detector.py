@@ -1,4 +1,5 @@
 import os, cv2
+from skimage import data, util
 from skimage.measure import label, regionprops
 import numpy as np
 
@@ -22,10 +23,31 @@ class BarrelDetector():
         mask_img=predict.reshape(800,1200)
         return mask_img
     
+    def get_bounding_box(self, img):
+        img=my_detector.segment_image(img)
+        img = util.img_as_ubyte(data.coins()) > 110
+        label_img = label(img, connectivity=img.ndim)
+        props = regionprops(label_img)
+        boxes=[]
+        for p in props:
+            minx, miny, maxx, maxy = p.bbox
+            r=(maxy-miny)/(maxx-minx)
+            if r>1:
+                b=[minx, miny, maxx, maxy]
+                boxes.append(b)
+        boxes=np.array(boxes)
+        return boxes
+            
+                
+                
+        
     
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
+#     img=cv2.imread('trainset/44.png')
+#     boxes=my_detector.get_bounding_box(img)
+#     print(boxes)
     
     
     
