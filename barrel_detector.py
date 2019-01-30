@@ -24,7 +24,7 @@ class BarrelDetector():
         return mask_img
     
     def get_bounding_box(self, img):
-        img=my_detector.segment_image(img)
+        img=BarrelDetector().segment_image(img)
         img = util.img_as_ubyte(data.coins()) > 110
         label_img = label(img, connectivity=img.ndim)
         props = regionprops(label_img)
@@ -45,9 +45,9 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-#     img=cv2.imread('trainset/44.png')
-#     boxes=my_detector.get_bounding_box(img)
-#     print(boxes)
+    img=cv2.imread('trainset/44.png')
+    boxes=my_detector.get_bounding_box(img)
+    print(boxes)
     
     
     
