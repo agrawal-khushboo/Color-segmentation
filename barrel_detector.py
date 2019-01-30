@@ -28,15 +28,24 @@ class BarrelDetector():
         img = util.img_as_ubyte(data.coins()) > 110
         label_img = label(img, connectivity=img.ndim)
         props = regionprops(label_img)
-        boxes=[]
+        r=1
+        x1=0
+        y1=0
+        x2=0
+        y2=0
         for p in props:
             minx, miny, maxx, maxy = p.bbox
-            r=(maxy-miny)/(maxx-minx)
-            if r>1:
+            newr=(maxy-miny)/(maxx-minx)
+            if newr>r:
+                r=newr
+                x1=minx
+                y1=miny
+                x2=maxx
+                y2=maxy
                 b=[minx, maxy, maxx, miny]
-                boxes.append(b)
+#                 boxes.append(b)
 #         boxes=np.array(boxes)
-        return boxes
+        return b
             
                 
                 
@@ -45,9 +54,7 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-#     img=cv2.imread('trainset/44.png')
-#     boxes=my_detector.get_bounding_box(img)
-#     print(boxes)
+
     
     
     
