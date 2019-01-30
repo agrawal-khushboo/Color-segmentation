@@ -13,33 +13,25 @@ import numpy as np
 class BarrelDetector():
     def __init__(self):
         self.weights=[7.17373143,-11.80197334,0.62492144,-4.35011283]
-#         self.weights=(np.matrix(self.weights)).T
-#         weights=weights.T
+#         self.weights=np.matrix(self.weights)
+#         self.weights=(self.weights).T
         
 
-    def sigmoid(score):
+    def sigmoid(self, score):
         return 1/(1+np.exp(-score))
 
     def segment_image(self, img):
-        x=[]
-        for i in range(3):
-            col=img[:,:,i]
-            col=np.reshape(col,(1,800*1200))
-            col=col/255         
-            x.append(col)
-        x.append(np.ones(800*1200))
-#         x=np.matrix(x)
-#         x=x.T
-        
-        score=np.dot(self.weights,x)
+        img=img.reshape(800*1200,3)
+        img=img/255
+        x=np.column_stack((img,np.ones(1200*800)))
+        s=np.dot(x,self.weights)
         predict=[]
         for i in range(800*1200):
-            if (np.float(score[i]))>=-4.5:
+            if (np.float(s[i]))>=-4.5:
                 predict.append(1)
             else:
                 predict.append(-1)
         mask_img=predict
-#         raise NotImplementedError
         return mask_img
 
 #     def get_bounding_box(self, img):
@@ -62,13 +54,14 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-#     img = cv2.imread('trainset/44.png')
+    img = cv2.imread('trainset/44.png')
+    mask_img=my_detector.segment_image(img)
     
 #         cv2.imshow('image', img)
 #         cv2.waitKey(0)
 #         cv2.destroyAllWindows()
 
-# mask_img,score = my_detector.segment_image(img)
+
 		#Display results:
 		#(1) Segmented images
 		#	 mask_img = my_detector.segment_image(img)
