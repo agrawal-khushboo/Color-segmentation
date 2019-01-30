@@ -33,6 +33,7 @@ class BarrelDetector():
         y1=0.0
         x2=0.0
         y2=0.0
+        boxes=[]
         for p in props:
             minx, miny, maxx, maxy = p.bbox
             newr=(maxy-miny)/(maxx-minx)
@@ -43,9 +44,9 @@ class BarrelDetector():
                 x2=maxx
                 y2=maxy
                 b=[minx, maxy, maxx, miny]
-#                 boxes.append(b)
+                boxes.append(b)
 #         boxes=np.array(boxes)
-        return b
+        return boxes
             
                 
                 
