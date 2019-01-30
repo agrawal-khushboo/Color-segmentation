@@ -5,14 +5,11 @@ import numpy as np
 
 class BarrelDetector():
     def __init__(self):
-        self.weights=[[7.17373143],[-11.80197334],[0.62492144],[-4.35011283]]
-
-    def sigmoid(self, score):
-        return 1/(1+np.exp(-score))
+        self.weights=np.array([7.17373143,-11.80197334,0.62492144,-4.35011283])
 
     def segment_image(self, img):
         img=img.reshape(800*1200,3)
-        img=img/255
+        img=img*(2/255)-1
         x=np.column_stack((img,np.ones(1200*800)))
         s=np.dot(x,self.weights)
         predict=[]
@@ -24,9 +21,11 @@ class BarrelDetector():
         mask_img=predict
         return mask_img
     
+    
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
+    
     
     
 
