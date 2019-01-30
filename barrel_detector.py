@@ -12,13 +12,13 @@ class BarrelDetector():
         img=img/255
         x=np.column_stack((img,np.ones(1200*800)))
         s=np.dot(x,self.weights)
-        predict=np.array([])
+        predict=[]
         for i in range(800*1200):
             if (s[i])>=-4.5:
                 predict.append(1)
             else:
                 predict.append(-1)
-        mask_img=predict
+        mask_img=np.array(predict)
         return mask_img
     
     
