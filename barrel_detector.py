@@ -5,7 +5,7 @@ import numpy as np
 
 class BarrelDetector():
     def __init__(self):
-        self.weights=[7.17373143,-11.80197334,0.62492144,-4.35011283]
+        self.weights=[[7.17373143],[-11.80197334],[0.62492144],[-4.35011283]]
 
     def sigmoid(self, score):
         return 1/(1+np.exp(-score))
@@ -27,6 +27,7 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    img = cv2.imread('trainset/44.png')
+    
+    
 
 
