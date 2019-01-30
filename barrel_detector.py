@@ -17,7 +17,7 @@ class BarrelDetector():
             if (s[i])>=-4.5:
                 predict.append(1)
             else:
-                predict.append(-1)
+                predict.append(0)
         mask_img=np.array(predict)
         return mask_img
     
