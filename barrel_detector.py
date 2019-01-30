@@ -18,7 +18,8 @@ class BarrelDetector():
                 predict.append(1)
             else:
                 predict.append(0)
-        mask_img=np.array(predict)
+        predict=np.array(predict)
+        mask_img=predict.reshape(800,1200)
         return mask_img
     
     
