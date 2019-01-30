@@ -35,7 +35,7 @@ class BarrelDetector():
             if r>1:
                 b=[minx, miny, maxx, maxy]
                 boxes.append(b)
-        boxes=np.array(boxes)
+#         boxes=np.array(boxes)
         return boxes
             
                 
@@ -45,9 +45,9 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    img=cv2.imread('trainset/44.png')
-    boxes=my_detector.get_bounding_box(img)
-    print(boxes)
+#     img=cv2.imread('trainset/44.png')
+#     boxes=my_detector.get_bounding_box(img)
+#     print(boxes)
     
     
     
