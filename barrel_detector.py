@@ -15,7 +15,7 @@ class BarrelDetector():
         s=np.dot(x,self.weights)
         predict=[]
         for i in range(800*1200):
-            if (s[i])>=-4.5:
+            if (s[i])>=-4:
                 predict.append(1)
             else:
                 predict.append(0)
@@ -31,7 +31,7 @@ class BarrelDetector():
         for p in props:
             minr,minc,maxr,maxc=p.bbox
             r=(maxr-minr)/(maxc-minc)
-            if r>0.9:   
+            if r>1.5:   
                 b=[minc,minr,maxc,maxr]
                 boxes.append(b)
 #             if r>1:
@@ -72,9 +72,9 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    img=cv2.imread('trainset/4.png')
-    boxes=my_detector.get_bounding_box(img)
-    print(boxes)
+    img=cv2.imread('trainset/44.png')
+    mask_img=my_detector.segment_image(img)
+    print(mask_img)
     
     
     
