@@ -25,27 +25,45 @@ class BarrelDetector():
     
     def get_bounding_box(self, img):
         img=BarrelDetector().segment_image(img)
-        img = util.img_as_ubyte(data.coins()) > 110
-        label_img = label(img, connectivity=img.ndim)
+        label_img = label(img)
         props = regionprops(label_img)
-        r=1.0
-        x1=0.0
-        y1=0.0
-        x2=0.0
-        y2=0.0
+        boxes=[]
         for p in props:
-            minx, miny, maxx, maxy = p.bbox
-            newr=(maxy-miny)/(maxx-minx)
-            if newr>r:
-                r=newr
-                x1=minx
-                y1=miny
-                x2=maxx
-                y2=maxy
-                b=[minx, maxy, maxx, miny]
-            boxes=[b]
-#         boxes=np.array(boxes)
+            minr,minc,maxr,maxc=p.bbox
+            r=(maxr-minr)/(maxc-minc)
+            if r>1.5:   
+                b=[maxr,minc,minr,maxc]
+                boxes.append(b)
+#             if r>1:
+#                 b=[minc,maxr,maxc,minr]
+#                 boxes.append()
         return boxes
+#         r=1.0
+
+#         x1=0.0
+#         y1=0.0
+#         x2=0.0
+#         y2=0.0
+
+   
+            
+#             r=(maxc-minc)/(maxr-minr)
+# #             print(r)
+#             if r>1:
+#                 b=[minc, minr, maxc, minr]
+#                 boxes.append(b)
+#             return boxes
+                
+#             newr=(maxy-miny)/(maxx-minx)
+#             if newr>r:
+#                 r=newr
+#                 x1=minx
+#                 y1=miny
+#                 x2=maxx
+#                 y2=maxy
+            
+#         boxes=np.array(boxes)
+        
             
                 
                 
@@ -54,7 +72,7 @@ class BarrelDetector():
 if __name__ == '__main__':
     folder = "trainset"
     my_detector = BarrelDetector()
-    img=cv2.imread('trainset/44.png')
+    img=cv2.imread('trainset/4.png')
     boxes=my_detector.get_bounding_box(img)
     print(boxes)
     
