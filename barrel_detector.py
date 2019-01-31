@@ -32,7 +32,7 @@ class BarrelDetector():
             minr,minc,maxr,maxc=p.bbox
             r=(maxr-minr)/(maxc-minc)
             if r>1.5:   
-                b=[minc,maxr,maxc,minr]
+                b=[minr,minc,maxr,maxc]
                 boxes.append(b)
 #             if r>1:
 #                 b=[minc,maxr,maxc,minr]
@@ -77,4 +77,6 @@ if __name__ == '__main__':
     print(boxes)
     
     
-   
+    
+
+
