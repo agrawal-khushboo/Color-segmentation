@@ -15,7 +15,7 @@ class BarrelDetector():
         s=np.dot(x,self.weights)
         predict=[]
         for i in range(800*1200):
-            if (s[i])>=-4:
+            if (s[i])>=-3.5:
                 predict.append(1)
             else:
                 predict.append(0)
