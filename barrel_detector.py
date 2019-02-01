@@ -33,7 +33,7 @@ class BarrelDetector():
             minr,minc,maxr,maxc=p.bbox
             r=(maxr-minr)/(maxc-minc)
             a=p['area']
-            if r>1.5 and a>500:   
+            if r>1.5 or r<0.66:   
                 b=[minc,minr,maxc,maxr]
                 boxes.append(b)
 #                 print(p['area'])
