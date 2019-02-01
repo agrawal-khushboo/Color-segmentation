@@ -10,7 +10,7 @@ class BarrelDetector():
 
     def segment_image(self, img):
         img=img.reshape(800*1200,3)
-        img=img/255
+        img=img*(2/255)-1
         x=np.column_stack((img,np.ones(1200*800)))
         s=np.dot(x,self.weights)
         predict=[]
