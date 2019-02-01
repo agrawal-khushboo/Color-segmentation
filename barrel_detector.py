@@ -1,6 +1,7 @@
 import os, cv2
 from skimage import data, util
 from skimage.measure import label, regionprops, moments_hu
+from matplotlib import pyplot as plt
 import numpy as np
 
 
@@ -9,6 +10,7 @@ class BarrelDetector():
         self.weights=np.array([7.17373143,-11.80197334,0.62492144,-4.35011283])
 
     def segment_image(self, img):
+        plt.imshow(img)
         img=img.reshape(800*1200,3)
         img=img/255
         x=np.column_stack((img,np.ones(1200*800)))
