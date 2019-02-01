@@ -31,7 +31,7 @@ class BarrelDetector():
         for p in props:
             minr,minc,maxr,maxc=p.bbox
             r=(maxr-minr)/(maxc-minc)
-            if 1.5<r<2:   
+            if 1.5<r<3:   
                 b=[minc,minr,maxc,maxr]
                 boxes.append(b)
 #             if r>1:
