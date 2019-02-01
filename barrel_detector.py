@@ -17,7 +17,7 @@ class BarrelDetector():
         s=np.dot(x,self.weights)
         predict=[]
         for i in range(800*1200):
-            if (s[i])>=-4:
+            if (s[i])>=-3.9:
                 predict.append(1)
             else:
                 predict.append(0)
@@ -35,7 +35,7 @@ class BarrelDetector():
             minr,minc,maxr,maxc=p.bbox
             r=(maxr-minr)/(maxc-minc)
             a=p['area']
-            if r>1.5 and a>1000:   
+            if r>1.5 and a>500:   
                 b=[minc,minr,maxc,maxr]
                 print(b)
                 boxes.append(b)
