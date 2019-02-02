@@ -37,7 +37,7 @@ class BarrelDetector():
             a=p['area']
             if r>1.5 and a>500:   
                 b=[minc,minr,maxc,maxr]
-                print(b)
+#                 print(b)
                 boxes.append(b)
 #                 print(p['area'])
 #             if r>1:
