@@ -16,8 +16,7 @@ plt.imshow(img)
 # Show the image
 fig = plt.figure()
 plt.imshow(img, interpolation='nearest')
-# plt.colorbar()
-# plt.title("left click: line segment         right click: close region")
+
 
 # Let user draw first ROI
 roi1 = RoiPoly(color='r', fig=fig)
