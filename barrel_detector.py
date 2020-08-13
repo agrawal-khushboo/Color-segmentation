@@ -27,7 +27,6 @@ class BarrelDetector():
     
     def get_bounding_box(self, img):
         img=BarrelDetector().segment_image(img)
-#         img=moments_hu(img)
         label_img = label(img)
         props = regionprops(label_img)
         boxes=[]
@@ -37,42 +36,8 @@ class BarrelDetector():
             a=p['area']
             if r>1.5 and a>500:   
                 b=[minc,minr,maxc,maxr]
-#                 print(b)
                 boxes.append(b)
-#                 print(p['area'])
-#             if r>1:
-#                 b=[minc,maxr,maxc,minr]
-#                 boxes.append()
         return boxes
-#         r=1.0
-
-#         x1=0.0
-#         y1=0.0
-#         x2=0.0
-#         y2=0.0
-
-   
-            
-#             r=(maxc-minc)/(maxr-minr)
-# #             print(r)
-#             if r>1:
-#                 b=[minc, minr, maxc, minr]
-#                 boxes.append(b)
-#             return boxes
-                
-#             newr=(maxy-miny)/(maxx-minx)
-#             if newr>r:
-#                 r=newr
-#                 x1=minx
-#                 y1=miny
-#                 x2=maxx
-#                 y2=maxy
-            
-#         boxes=np.array(boxes)
-        
-            
-                
-                
         
     
 if __name__ == '__main__':
@@ -81,7 +46,6 @@ if __name__ == '__main__':
     img=cv2.imread('trainset/41.png')
     mask_img=my_detector.segment_image(img)
     boxes=my_detector.get_bounding_box(img)
-#     print(mask_img)
     print(boxes)
     
     
